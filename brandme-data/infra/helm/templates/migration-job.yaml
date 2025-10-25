@@ -1,0 +1,27 @@
+# Copyright (c) Brand.Me, Inc. All rights reserved.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: brandme-data-migrations
+spec:
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: migrations
+          image: brandme-data:latest
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: brandme-db-secret
+                  key: DATABASE_URL
+          command:
+            - /bin/sh
+          args:
+            - |- 
+              set -euo pipefail
+              for file in /app/migrations/*.sql; do
+                echo "Applying ${file}"
+                psql "$DATABASE_URL" -f "$file"
+              done

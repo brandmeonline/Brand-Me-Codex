@@ -1,0 +1,2 @@
+databaseUrl: "postgresql://brandme_user:brandme_pass@brandme-postgres:5432/brandme"
+regionDefault: "us-east1"

@@ -1,0 +1,26 @@
+{
+  "name": "brandme-gateway",
+  "version": "0.1.0",
+  "description": "Brand.Me edge gateway for garment scan ingestion and NATS event publishing.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc -p .",
+    "start": "node dist/server.js",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^4.26.2",
+    "nats": "^2.17.0",
+    "pino": "^8.17.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}

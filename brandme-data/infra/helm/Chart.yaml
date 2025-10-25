@@ -1,0 +1,4 @@
+apiVersion: v2
+name: brandme-data
+version: 0.1.0
+description: Helm chart for applying Brand.Me DB migrations and seed jobs.
