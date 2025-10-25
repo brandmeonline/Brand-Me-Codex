@@ -1,0 +1,4 @@
+apiVersion: v2
+name: brandme-gateway
+version: 0.1.0
+description: Helm chart for deploying the Brand.Me gateway service to GKE.

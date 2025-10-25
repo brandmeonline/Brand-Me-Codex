@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brandme-ai-brain-hub
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brandme-ai-brain-hub
+  template:
+    metadata:
+      labels:
+        app: brandme-ai-brain-hub
+    spec:
+      containers:
+        - name: ai-brain-hub
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: DATABASE_URL
+              value: "{{ .Values.env.databaseUrl }}"
+            - name: REGION_DEFAULT
+              value: "{{ .Values.env.regionDefault }}"
+            - name: KNOWLEDGE_SERVICE_URL
+              value: "{{ .Values.env.knowledgeServiceUrl }}"
+            - name: TX_BUILDER_URL
+              value: "{{ .Values.env.txBuilderUrl }}"
+            - name: COMPLIANCE_AUDIT_URL
+              value: "{{ .Values.env.complianceAuditUrl }}"
+          ports:
+            - containerPort: {{ .Values.service.aiBrainHubPort }}
+          command: ["uvicorn", "ai_brain_hub.main:app", "--host", "0.0.0.0", "--port", "{{ .Values.service.aiBrainHubPort }}"]

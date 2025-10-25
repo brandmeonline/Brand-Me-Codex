@@ -1,0 +1,4 @@
+apiVersion: v2
+name: brandme-core
+version: 0.1.0
+description: Helm chart for Brand.Me core services (ai-brain-hub and policy-safety)

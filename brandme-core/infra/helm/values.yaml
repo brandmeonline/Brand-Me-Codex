@@ -1,0 +1,14 @@
+image:
+  repository: brandme-core
+  tag: latest
+
+env:
+  databaseUrl: postgresql://brandme_user:brandme_pass@brandme-postgres:5432/brandme
+  regionDefault: us-east1
+  knowledgeServiceUrl: http://brandme-knowledge:7001
+  txBuilderUrl: http://brandme-chain:7002
+  complianceAuditUrl: http://brandme-compliance:7003
+
+service:
+  aiBrainHubPort: 8000
+  policySafetyPort: 8001
